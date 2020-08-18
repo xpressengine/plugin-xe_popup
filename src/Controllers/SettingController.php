@@ -72,17 +72,17 @@ class SettingController extends Controller
     public function add(Request $request, Handler $handler)
     {
         $this->validate($request, $handler->getCreateRule());
-
         $params = $request->only(['popup_name', 'occur_type', 'occur_url_info', 'popup_open_type', 'popup_content_type', 'popup_content_html',
             'link', 'link_target', 'size_width', 'size_height', 'position_x', 'position_y', 'inactive_days', 'inactive_days_message',
             'status', 'expose_type', 'started_at', 'ended_at', 'started_time_at', 'ended_time_at']);
         if ($request->has('occur_module_info')) {
-            $params['occur_module_info'] = json_enc($request->has('occur_module_info'));
+            $params['occur_module_info'] = json_enc($request->get('occur_module_info'));
         } else {
             $params['occur_module_info'] = '{}';
         }
 
-        if ($request->has('popup_content_file')) {
+
+        if ($request->has('popup_content_file') && $request->get('popup_content_type') === '2' && !is_null($request->file('popup_content_file'))) {
             $contentFilePath = $handler->uploadContentFile($request->file('popup_content_file'));
             $params['popup_content_file_path'] = $contentFilePath;
         } else {
@@ -133,8 +133,7 @@ class SettingController extends Controller
         } else {
             $params['occur_module_info'] = '{}';
         }
-
-        if ($request->has('popup_content_file') && $request->get('popup_content_file')) {
+        if ($request->has('popup_content_file') && $request->get('popup_content_type') === '2' && !is_null($request->file('popup_content_file'))) {
             $contentFilePath = $handler->uploadContentFile($request->file('popup_content_file'));
             $params['popup_content_file_path'] = $contentFilePath;
         }

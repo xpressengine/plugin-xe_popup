@@ -68,4 +68,11 @@ function oneDayCloseXePopup(id) {
   }
 }
 
+function setXePopup( id, top, left, width, height ) {
+
+  document.all[id].style.top = top+'px';
+  document.all[id].style.left = left+'px';
+  document.all[id].style.width = width+'px';
+  document.all[id].style.height = height+'px';
+}
 
