@@ -17,7 +17,7 @@
     <div class="pop-close-box">
         <form name="pop_form">
             <div class="pop-check" id="check"> <label for=""> <input type="checkbox" name="chkbox" value="checkbox">{!! $item->inactive_days_message !!} </label> </div>
-            <div class="pop-close" id="close" style="margin:auto;"><a class="pop-close-text" href="javascript:closePop('xe_popup_name_{{$item->id}}', $item->inactive_days);">CLOSE</a></div>
+            <div class="pop-close" id="close" style="margin:auto;"><a class="pop-close-text" href="javascript:closeXePopup('xe_popup_name_{{$item->id}}', {{$item->inactive_days}});">CLOSE</a></div>
         </form>
     </div>
 </div>
