@@ -134,11 +134,9 @@ class SettingController extends Controller
             $params['occur_module_info'] = '{}';
         }
 
-        if ($request->has('popup_content_file')) {
+        if ($request->has('popup_content_file') && $request->get('popup_content_file')) {
             $contentFilePath = $handler->uploadContentFile($request->file('popup_content_file'));
             $params['popup_content_file_path'] = $contentFilePath;
-        } else {
-            $params['popup_content_file_path'] = '';
         }
 
         $item = $handler->put($item->id, $params);
