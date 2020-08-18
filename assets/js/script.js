@@ -58,4 +58,14 @@ function closeXePopup(id, expiredays) {
     document.all[id].style.visibility = "hidden";
 }
 
+function oneDayCloseXePopup(id) {
+
+  cookiedata = document.cookie;
+  if ( cookiedata.indexOf(id+"=done") < 0 ){
+    document.all[id].style.visibility = "visible";
+  } else {
+    document.all[id].style.visibility = "hidden";
+  }
+}
+
 

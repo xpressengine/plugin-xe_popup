@@ -21,3 +21,8 @@
         </form>
     </div>
 </div>
+
+
+<script>
+    oneDayCloseXePopup('xe_popup_name_{{$item->id}}');
+</script>
