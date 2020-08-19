@@ -51,8 +51,8 @@ function setCookieXePopup( name, value, expiredays ) {
     todayDate.setDate( todayDate.getDate() + expiredays );
     document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
 }
-function closeXePopup(id, expiredays) {
-    if ( document.pop_form.chkbox.checked ){
+function closeXePopup(id, expiredays, formId) {
+    if ( document.forms[formId].chkbox.checked){
         setCookieXePopup( id, "done" , expiredays );
     }
     document.all[id].style.visibility = "hidden";
