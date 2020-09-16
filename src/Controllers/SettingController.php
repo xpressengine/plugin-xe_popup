@@ -10,7 +10,7 @@ use Xpressengine\Plugins\Popup\Handler;
 
 class SettingController extends Controller
 {
-    protected $perPage = 2;
+    protected $perPage = 20;
 
     public function index(Request $request)
     {
@@ -19,25 +19,12 @@ class SettingController extends Controller
         $current = Carbon::now();
         //기간 검색
         if ($endDate = $request->get('end_date', $current->format('Y-m-d'))) {
-            $query = $query->where('created_at', '<=', $endDate . ' 23:59:59');
+            // $query = $query->where('created_at', '<=', $endDate . ' 23:59:59');
         }
         if ($startDate = $request->get('start_date', $current->subDay(7)->format('Y-m-d'))) {
-            $query = $query->where('created_at', '>=', $startDate . ' 00:00:00');
+            // $query = $query->where('created_at', '>=', $startDate . ' 00:00:00');
         }
 
-        if ($userEmail = $request->get('user_email')) {
-            $writers = \XeUser::where(
-                'email',
-                'like',
-                '%' . $userEmail . '%'
-            )->selectRaw('id')->get();
-
-            $writerIds = [];
-            foreach ($writers as $writer) {
-                $writerIds[] = $writer['id'];
-            }
-            $query = $query->whereIn('user_id', $writerIds);
-        }
 
         $items = $query->orderBy('created_at', 'desc')->paginate($this->perPage)->appends($request->except('page'));
 
@@ -45,7 +32,6 @@ class SettingController extends Controller
             'items' => $items,
             'startDate' => $startDate,
             'endDate' => $endDate,
-            'userEmail' => $userEmail,
         ]);
     }
 
