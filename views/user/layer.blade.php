@@ -5,7 +5,7 @@
     @elseif ($item->popup_content_type == 2)
     @if ($item->isImage())
         @if ($item->popup_content_file_path != '')
-                <a href="{{$item->link}}" target="@if($item->link_target === '') _self @else {{$item->link_target}} @endif">
+                <a href="{{$item->link}}" @if ($item->link_target !== '' && $item->link_target !== '_self') target="{{ $item->link_target }}" @endif>
                     <img class="xe-pop-img" src="{{$item->popup_content_file_path}}" alt="">
                 </a>
             @endif
