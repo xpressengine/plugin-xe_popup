@@ -45,8 +45,11 @@ class Plugin extends AbstractPlugin
             return new $proxyClass($this);
         });
         app()->alias(Handler::class, 'xe.popup');
-    }
 
+        $key = static::getId();
+        $config = app('config')->get($key, []);
+        app('config')->set($key, array_merge(require __DIR__.'/config/config.php', $config));
+    }
 
     /**
      * 이 메소드는 활성화(activate) 된 플러그인이 부트될 때 항상 실행됩니다.

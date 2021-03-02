@@ -16,7 +16,13 @@ class UserController extends Controller
         $item = $handler->get($id);
 
         XePresenter::htmlRenderPRenderPopopup();
-        return XePresenter::make('xe_popup::views.user.popup', [
+
+        $path = app('config')->get('xe_popup.popup_blade_path');
+        if ($path == false) {
+            $path = 'xe_popup::views.user.popup';
+        }
+
+        return XePresenter::make($path, [
             'item' => $item,
         ]);
     }

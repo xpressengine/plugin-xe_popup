@@ -49,8 +49,12 @@ class Handler
 //        $html = '<script>
 //layerXePopup('.json_enc($item).');
 //</script>';
+        $path = app('config')->get('xe_popup.layer_blade_path');
+        if ($path == false) {
+            $path = 'xe_popup::views.user.layer';
+        }
 
-        $html = view('xe_popup::views.user.layer', ['item' => $item])->render();
+        $html = view($path, ['item' => $item])->render();
         return $html;
     }
 
