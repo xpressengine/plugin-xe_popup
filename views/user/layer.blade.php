@@ -26,7 +26,7 @@
 
 
 <script>
-    setXePopup('xe_popup_name_{{$item->id}}',{{$item->position_x}},{{$item->position_y}},{{$item->size_width}},{{$item->size_height}});
+    setXePopup('xe_popup_name_{{$item->id}}',{{$item->position_y}},{{$item->position_x}},{{$item->size_width}},{{$item->size_height}});
 
     oneDayCloseXePopup('xe_popup_name_{{$item->id}}');
 
