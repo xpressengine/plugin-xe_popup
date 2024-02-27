@@ -158,7 +158,7 @@ return [
         'en' => 'When the user clicks the checkbox created at the bottom, the pop-up is not shown during the input value. (Unit: day), (default 1)',
     ],
     'inactiveDaysMessage' => [
-        'ko' => '빌활성 기간 메시지',
+        'ko' => '비활성 기간 메시지',
         'en' => 'Inactive days message',
     ],
     'inactiveDaysMessageDescription' => [

@@ -237,7 +237,7 @@ windowXePopup("'.$url.'", '.json_enc($item).');
             $args['inactive_days'] = '1';
         }
         if (isset($args['inactive_days_message']) == false) {
-            $args['inactive_days_message'] = '오늘 하루 열리지 앟음';
+            $args['inactive_days_message'] = '오늘 하루동안 보지 않음';
         }
         if (isset($args['started_at']) == false) {
             $args['started_at'] = '';
